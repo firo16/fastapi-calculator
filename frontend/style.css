@@ -1,0 +1,359 @@
+/* Usuwa domyślne różnice w obliczaniu szerokości elementów */
+* {
+    box-sizing: border-box;
+}
+
+
+/* Cała strona */
+body {
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        radial-gradient(circle at top left, #263653 0%, transparent 35%),
+        radial-gradient(circle at bottom right, #142943 0%, transparent 40%),
+        linear-gradient(135deg, #0b1220, #111827);
+
+    color: #f8fafc;
+}
+
+
+/* Nagłówek */
+h1 {
+    margin: 0 0 20px;
+
+    font-size: 30px;
+    letter-spacing: 1px;
+
+    color: #f8fafc;
+
+    text-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Ekran kalkulatora */
+#ekran {
+    width: 340px;
+    height: 85px;
+
+    margin-bottom: 14px;
+    padding: 15px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+
+    font-size: 34px;
+    font-weight: 600;
+    text-align: right;
+
+    outline: none;
+
+    box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.35),
+        0 12px 30px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(12px);
+}
+
+
+/* Kontener wszystkich przycisków */
+.buttons {
+    width: 340px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    padding: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(16px);
+}
+
+
+/* Wszystkie przyciski */
+button {
+    height: 62px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+
+    background: #253247;
+    color: #f8fafc;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.12s ease,
+        background-color 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+
+/* Efekt po najechaniu myszką */
+button:hover {
+    background: #33445d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 9px 18px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+
+/* Efekt podczas kliknięcia */
+button:active {
+    transform: translateY(1px) scale(0.97);
+
+    box-shadow:
+        0 3px 7px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+
+
+/* Operatory matematyczne */
+button[data-operator="+"] {
+    background: #2563eb;
+}
+
+button[data-operator="-"] {
+    background: #2563eb;
+}
+
+button[data-operator="*"] {
+    background: #2563eb;
+}
+
+button[data-operator="/"] {
+    background: #2563eb;
+}
+
+button[data-operator="//"] {
+    background: #2563eb;
+}
+
+button[data-operator="^"] {
+    background: #2563eb;
+}
+
+button[data-operator="%"] {
+    background: #2563eb;
+}
+
+
+/* Najechanie na operator */
+button[data-operator="+"]:hover,
+button[data-operator="-"]:hover,
+button[data-operator="*"]:hover,
+button[data-operator="/"]:hover,
+button[data-operator="//"]:hover,
+button[data-operator="^"]:hover,
+button[data-operator="%"]:hover {
+    background: #3b82f6;
+}
+
+
+/* Przycisk równa się */
+button[data-operator="="] {
+    background: #16a34a;
+}
+
+button[data-operator="="]:hover {
+    background: #22c55e;
+}
+
+
+/* Przycisk czyszczenia */
+button[data-operator="C"] {
+    background: #dc2626;
+}
+
+button[data-operator="C"]:hover {
+    background: #ef4444;
+}
+
+
+/* Kropka */
+button[data-operator="."] {
+    background: #475569;
+}
+
+button[data-operator="."]:hover {
+    background: #64748b;
+}
+
+
+/* Widoczny fokus klawiatury */
+button:focus-visible {
+    outline: 3px solid rgba(96, 165, 250, 0.75);
+    outline-offset: 2px;
+}
+
+
+/* Dostosowanie do mniejszych ekranów */
+@media (max-width: 420px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    #ekran,
+    .buttons {
+        width: calc(100vw - 30px);
+        max-width: 340px;
+    }
+
+    button {
+        height: 58px;
+        font-size: 18px;
+    }
+}
+
+.history {
+    width: 340px;
+    max-height: 270px;
+
+    margin-top: 18px;
+    padding: 18px;
+
+    overflow-y: auto;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(16px);
+}
+
+
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+
+.history-header h2 {
+    margin: 0;
+
+    font-size: 20px;
+    letter-spacing: 0.5px;
+}
+
+
+#clear-history {
+    width: auto;
+    height: auto;
+
+    padding: 8px 12px;
+
+    background: rgba(220, 38, 38, 0.85);
+
+    font-size: 13px;
+}
+
+
+#clear-history:hover {
+    background: #ef4444;
+}
+
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 11px 12px;
+    margin-bottom: 8px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+
+    background: rgba(15, 23, 42, 0.55);
+}
+
+
+.history-item:last-child {
+    margin-bottom: 0;
+}
+
+
+.history-calculation {
+    color: #f8fafc;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+.history-date {
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+.empty-history {
+    margin: 10px 0;
+
+    color: #94a3b8;
+
+    text-align: center;
+}
+
+
+.history::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+.history::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.history::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+
+    background: rgba(148, 163, 184, 0.4);
+}
+
+
+@media (max-width: 420px) {
+    .history {
+        width: calc(100vw - 30px);
+        max-width: 340px;
+    }
+}

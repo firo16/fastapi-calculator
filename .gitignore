@@ -1,0 +1,18 @@
+# Wirtualne środowisko Pythona
+.venv/
+venv/
+
+# Pliki tymczasowe Pythona
+__pycache__/
+*.pyc
+
+# Ustawienia edytorów
+.idea/
+.vscode/
+
+# Lokalna baza z historią użytkownika
+calculator.db
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db

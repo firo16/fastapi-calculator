@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Mój kalkulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Kalkulator</h1>
+    <input type="text" id="ekran" readonly>
+
+    <div class="buttons">
+        <button data-number='1'>1</button>
+        <button data-number="2">2</button>
+        <Button data-number='3'>3</Button>
+        <button data-operator='+'>+</button>
+        <button data-number='4'>4</button>
+        <button data-number='5'>5</button>
+        <button data-number='6'>6</button>
+        <button data-operator='-'>-</button>
+        <button data-number='7'>7</button>
+        <button data-number='8'>8</button>
+        <button data-number='9'>9</button>
+        <button data-operator='*'>*</button>
+        <button data-number='0'>0</button>
+        <button data-operator='/'>/</button>
+        <button data-operator='//'>//</button>
+        <button data-operator='^'>^</button>
+        <button data-operator='.'>.</button>
+        <button data-operator='%'>%</button>
+        <button data-operator='='>=</button>
+        <button data-operator='C'>C</button>
+    </div>
+    <section class="history">
+        <div class="history-header">
+        <h2>Historia</h2>
+        <button id="clear-history" type="button">Wyczyść</button>
+        </div>
+        
+        <div id="history-list">
+        <p class="empty-history">Brak obliczeń</p>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
